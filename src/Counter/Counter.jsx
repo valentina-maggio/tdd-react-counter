@@ -6,6 +6,10 @@ function Counter() {
   const [counterValue, setCounterValue] = useState(0);
   const [inputValue, setInputValue] = useState(1);
 
+  const addToCounter = () => {
+    setCounterValue(counterValue + inputValue)
+  }
+
   return (
     <div >
       <h3 data-testid='header'>My Counter</h3>
@@ -20,7 +24,10 @@ function Counter() {
           setInputValue(e.target.value)
         }}
         />
-      <button data-testid='add-btn'>+</button>
+      <button 
+        data-testid='add-btn'
+        onClick={addToCounter}
+      >+</button>
     </div>
   );
 }
