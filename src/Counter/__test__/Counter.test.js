@@ -1,6 +1,6 @@
 import React from 'react';
 import Counter from '../Counter';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 test('header render with correct text', () => {
@@ -37,3 +37,16 @@ test('input contains initial value of 1', () => {
 
   expect(inputEl.value).toBe('1');
 });
+
+test('change value of input works correctly', () => {
+  render(<Counter />);
+  const inputEl = screen.getByTestId('input');
+
+  fireEvent.change(inputEl, {
+    target: {
+      value: '5'
+    }
+  })
+
+  expect(inputEl.value).toBe('5');
+})
