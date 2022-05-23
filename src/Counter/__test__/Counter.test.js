@@ -30,3 +30,10 @@ test('subtract button renders with +', () => {
 
   expect(subtractBtn.textContent).toBe('-');
 });
+
+test('input contains initial value of 1', () => {
+  render(<Counter />);
+  const inputEl = screen.getByTestId('input');
+
+  expect(inputEl.value).toBe('1');
+});
