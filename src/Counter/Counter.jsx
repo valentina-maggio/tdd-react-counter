@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Counter.css';
 
 function Counter() {
 
@@ -10,7 +11,11 @@ function Counter() {
       <h3 data-testid='header'>My Counter</h3>
       <h2 data-testid='counter'>{counterValue}</h2>
       <button data-testid='subtract-btn'>-</button>
-      <input data-testid='input' type='number' value={inputValue}></input>
+      <input 
+        className='text-center'
+        data-testid='input' 
+        type='number' 
+        value={inputValue}></input>
       <button data-testid='add-btn'>+</button>
     </div>
   );
