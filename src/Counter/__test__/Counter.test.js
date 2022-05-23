@@ -8,5 +8,11 @@ test('header render with correct text', () => {
   const headerEl = screen.getByTestId('header');
 
   expect(headerEl.textContent).toBe('My Counter');
-})
+});
 
+test('counter initially starts with text of 0', () => {
+  render(<Counter />);
+  const counterEl = screen.getByTestId('counter');
+
+  expect(counterEl.textContent).toBe('0');
+});
