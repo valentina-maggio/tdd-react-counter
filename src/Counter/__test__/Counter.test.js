@@ -99,7 +99,7 @@ test('adding and then subtracting leads to the correct counter number', () => {
     target: {
       value: '10'
     }
-  })
+  });
 
   fireEvent.click(addBtnEl);
   fireEvent.click(addBtnEl);
@@ -122,7 +122,7 @@ test('a series of multiple adds and subtracts leads to the correct counter numbe
     target: {
       value: '10'
     }
-  })
+  });
 
   fireEvent.click(addBtnEl);
   fireEvent.click(addBtnEl);
@@ -135,11 +135,46 @@ test('a series of multiple adds and subtracts leads to the correct counter numbe
     target: {
       value: '5'
     }
-  })
+  });
 
   fireEvent.click(addBtnEl);
   fireEvent.click(subtractBtnEl);
   fireEvent.click(subtractBtnEl);
 
   expect(counterEl.textContent).toBe('15');
-})
+});
+
+test('counter contains correct className', () => {
+  render(<Counter />);
+  const counterEl = screen.getByTestId('counter');
+  const subtractBtnEl = screen.getByTestId('subtract-btn');
+  const addBtnEl = screen.getByTestId('add-btn');
+  const inputEl = screen.getByTestId('input');
+
+  fireEvent.change(inputEl, {
+    target: {
+      value: '50'
+    }
+  });
+
+  fireEvent.click(addBtnEl);
+
+  expect(counterEl.className).toBe('');
+
+  fireEvent.click(addBtnEl);
+
+  expect(counterEl.className).toBe('green');
+
+  fireEvent.click(subtractBtnEl);
+  fireEvent.click(subtractBtnEl);
+
+  expect(counterEl.className).toBe('');
+
+  fireEvent.click(subtractBtnEl);
+  fireEvent.click(subtractBtnEl);
+  fireEvent.click(subtractBtnEl);
+  fireEvent.click(subtractBtnEl);
+
+  expect(counterEl.className).toBe('red');
+});
+
